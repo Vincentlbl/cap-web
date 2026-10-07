@@ -83,4 +83,20 @@ fetch('/version.json', { headers: { accept: 'application/json' } })
       versionElt.textContent = `version ${donnees.version}`;
     }
   })
-  .catch(() => {});
+  async function afficherVersion() {
+  if (!versionElt) {
+    return;
+  }
+  try {
+    const reponse = await fetch('/version.json', { headers: { accept: 'application/json' } });
+    if (!reponse.ok) {
+      throw new Error(`statut ${reponse.status}`);
+    }
+    const donnees = await reponse.json();
+    versionElt.textContent = `version ${donnees.version}`;
+  } catch {
+    versionElt.textContent = 'version indisponible';
+  }
+}
+
+afficherVersion();
