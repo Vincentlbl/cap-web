@@ -10,11 +10,14 @@ Il faut Node 24.20 ou plus (`node --version`). Dans le dossier `atelier` :
 
 ```
 npm ci
-cp cahier-personnel.exemple.json cahier-personnel.json
 ```
 
-Puis ouvrir `cahier-personnel.json` dans l'éditeur et y mettre la limite et les deux mots du binôme.
+Les réglages du binôme (limite, mots) sont déjà dans `cahier-personnel.json` : rien à créer ni à copier.
 
+```
+npm start        lance Cap Web sur http://127.0.0.1:3000 (Ctrl+C l'arrête)
+npm test         lance les tests
+npm run lint     vérifie le style du code
 ```
 npm start        lance Cap Web sur http://127.0.0.1:3000 (Ctrl+C l'arrête)
 npm test         lance les tests
