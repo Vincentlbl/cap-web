@@ -49,6 +49,7 @@ async function demanderConseil() {
 
 function majCompteur() {
   compteurElt.textContent = `${champ.value.length} / ${LIMITE}`;
+  compteurElt.classList.toggle('alerte', champ.value.length >= LIMITE * 0.9);
 }
 
 formulaire.addEventListener('submit', async (event) => {

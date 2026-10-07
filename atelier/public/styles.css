@@ -122,3 +122,8 @@ footer {
     width: 100%;
   }
 }
+
+#compteur.alerte {
+  color: #b00020;
+  font-weight: 700;
+}
