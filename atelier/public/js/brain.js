@@ -50,3 +50,12 @@ export function replyTo(message) {
   // Message inconnu : on rappelle ce que Cap Web sait faire.
   return REPONSES.repli;
 }
+
+export function estMessage(m) {
+  return (
+    typeof m === 'object' &&
+    m !== null &&
+    (m.role === 'user' || m.role === 'assistant') &&
+    typeof m.text === 'string'
+  );
+}
