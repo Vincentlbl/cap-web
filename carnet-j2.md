@@ -136,4 +136,29 @@ README final dans `atelier` (commit `14c397f`). Incident : le README du formateu
 
 ### Étape 12 · Le bilan
 
-Bilan écrit dans `bilan/Vincent.md`.
+Bilan commun écrit dans `atelier/bilan/Sami_Vincent.md` (commit `a7ec530`).
+
+
+### Étape 13 · Un historique abîmé ne casse plus Cap Web
+
+Avec `[null]` dans le stockage, la page plantait (« Cannot read properties of null (reading 'role') »). `estMessage` vérifie chaque élément, et `charger()` filtre avec `donnees.filter(estMessage)` : plus d'erreur rouge, et une vraie conversation revient après rechargement (commit `9076a1a`).
+
+### Étape 14 · Un test pour estMessage
+
+Quatre tests dans `tests/messages.test.js`. Avec `return true;` dans `estMessage`, trois tests sont devenus rouges (`pass 46`, `fail 3`) ; après `git restore`, tout est vert (`pass 49`, `fail 0`) (commit `0d40270`).
+
+### Étape 15 · Entrée envoie le message
+
+Entrée envoie, Maj+Entrée va à la ligne, et Entrée sur un champ vide affiche « Veuillez renseigner ce champ » sans rien envoyer. `requestSubmit()` passe par l'écouteur `submit` : la validation reste la même (commit `47cda64`).
+
+### Étape 16 · Le compteur prévient avant la limite
+
+À partir de 171 caractères (90 % de 190), le compteur passe en rouge et en gras ; il redevient normal après l'envoi (commit `a7b9cb0`). Lighthouse Accessibilité est tombé à 95 : le texte blanc du bouton Envoyer sur le vert `#2d9324` n'était pas assez contrasté. J'ai foncé `--accent` en `#1f7a1f` : le score est revenu à 100 (commit `2ab9ea5`).
+
+### Étape 17 · Les tests tournent sur GitHub à chaque push
+
+`.github/workflows/ci.yml` à la racine du dépôt : `npm ci`, `npm run lint` et `npm test` à chaque push et pull request. Coche verte dans l'onglet Actions (commit `a5ad104`).
+
+### Étape 18 · La version 1.0.0
+
+La version vient de `package.json` (`paquet.version`), plus de « dev » écrit en dur : le pied de page affiche « version 1.0.0 ». Étiquette `v1.0.0` visible dans les Tags de GitHub (commit `39f8a47`).
