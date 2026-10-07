@@ -46,3 +46,14 @@ Objectif prouvé par : `ceccb86` (feat: nouvelle couleur, dont la description an
 ## Objectif
 
 Pouvoir expliquer chaque ligne que l'on fait fusionner, et refuser un changement en donnant une raison précise.
+
+## Bilan notion par notion
+
+| Notion | Départ (mardi) | Ce qui a progressé | Ce qui reste à renforcer |
+|---|---|---|---|
+| Structure HTML | à l'aise | `label` lié au champ, `aria-describedby` du compteur, Lighthouse à 100 | structurer une page plus grande |
+| CSS et responsive | à l'aise | media query à 375 px, contraste du bouton corrigé (`#1f7a1f`) | thème sombre, autres tailles d'écran |
+| JavaScript | à l'aise | `async/await`, `try/catch`, `estMessage`, fonctions pures dans `brain.js` | relire tout le code avant de le fusionner |
+| DOM et événements | à l'aise | `textContent` contre `innerHTML`, `keydown` + `requestSubmit` | gérer d'autres événements (focus, composition) |
+| Git | à l'aise | branches, pull requests relues, étiquette `v1.0.0`, correction d'une erreur de commit | relire avant de fusionner |
+| Tests | à l'aise | test vu rouge puis vert, test cassé exprès, CI GitHub | écrire le test avant le code à chaque fois |
