@@ -33,7 +33,24 @@ function charger() {
   }
 }
 
-formulaire.addEventListener('submit', (event) => {
+async function demanderConseil() {
+  try {
+    const reponse = await fetch('/api/conseil', { headers: { accept: 'application/json' } });
+    if (!reponse.ok) {
+      throw new Error(`statut ${reponse.status}`);
+    }
+    const donnees = await reponse.json();
+    return donnees.conseil;
+  } catch {
+    return 'Le serveur ne répond pas : conseil indisponible.';
+  }
+}
+
+function majCompteur() {
+  compteurElt.textContent = `${champ.value.length} / ${LIMITE}`;
+}
+
+formulaire.addEventListener('submit', async (event) => {
   event.preventDefault();
   const controle = validateMessage(champ.value);
   if (!controle.ok) {
@@ -42,7 +59,10 @@ formulaire.addEventListener('submit', (event) => {
     return;
   }
   historique.push({ role: 'user', text: controle.value });
-  historique.push({ role: 'assistant', text: replyTo(controle.value) });
+  const reponse = controle.value.toLowerCase() === 'conseil'
+    ? await demanderConseil()
+    : replyTo(controle.value);
+  historique.push({ role: 'assistant', text: reponse });
   sauvegarder();
   renderMessages(historique, liste);
   champ.value = '';
@@ -62,28 +82,17 @@ effacer.addEventListener('click', () => {
   statut.textContent = 'Conversation effacée.';
 });
 
-function majCompteur() {
-  compteurElt.textContent = `${champ.value.length} / ${LIMITE}`;
-}
 champ.addEventListener('input', majCompteur);
-majCompteur();
 
 // La limite vient de brain.js : un seul endroit à modifier.
 champ.maxLength = LIMITE;
 limiteElt.textContent = String(LIMITE);
-
+majCompteur();
 
 charger();
 renderMessages(historique, liste);
 
-fetch('/version.json', { headers: { accept: 'application/json' } })
-  .then((reponse) => (reponse.ok ? reponse.json() : null))
-  .then((donnees) => {
-    if (donnees && typeof donnees.version === 'string' && versionElt) {
-      versionElt.textContent = `version ${donnees.version}`;
-    }
-  })
-  async function afficherVersion() {
+async function afficherVersion() {
   if (!versionElt) {
     return;
   }
