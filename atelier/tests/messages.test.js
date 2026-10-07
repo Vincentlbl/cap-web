@@ -1,0 +1,19 @@
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import { estMessage } from '../public/js/brain.js';
+
+test('un vrai message donne true', () => {
+  assert.equal(estMessage({ role: 'user', text: 'salut' }), true);
+});
+
+test('null donne false', () => {
+  assert.equal(estMessage(null), false);
+});
+
+test('un rôle inconnu donne false', () => {
+  assert.equal(estMessage({ role: 'pirate', text: 'ahoy' }), false);
+});
+
+test('un texte qui est un nombre donne false', () => {
+  assert.equal(estMessage({ role: 'user', text: 42 }), false);
+});
