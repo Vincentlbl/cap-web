@@ -21,6 +21,12 @@ const TYPES = {
   'js/view.js': 'text/javascript; charset=utf-8'
 };
 
+const CONSEILS = [
+  'Lisez les règles à voix haute avant de commencer la partie.',
+  'Laissez les nouveaux joueurs jouer en premier.',
+  'Rangez les pièces dans leur boîte dès la fin de la partie.'
+];
+
 export function createApp({ publicDir, version = 'dev' } = {}) {
   const serveur = http.createServer((req, res) => {
     traiter(req, res).catch(() => {
@@ -50,6 +56,16 @@ export function createApp({ publicDir, version = 'dev' } = {}) {
       res.end('Non trouvé');
       return;
     }
+
+        // Route /api/conseil : un conseil tiré au hasard, en JSON.
+    if (chemin === '/api/conseil') {
+      const conseil = CONSEILS[Math.floor(Math.random() * CONSEILS.length)];
+      const corps = JSON.stringify({ conseil });
+      res.writeHead(200, { 'content-type': 'application/json; charset=utf-8', 'content-length': Buffer.byteLength(corps) });
+      res.end(methode === 'HEAD' ? '' : corps);
+      return;
+    }
+    
     // Métadonnée de version fournie au démarrage.
     if (chemin === '/version.json') {
       const corps = JSON.stringify({ version });
