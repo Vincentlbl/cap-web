@@ -1,6 +1,6 @@
 # Carnet de bord · J2
 
-Binôme : b17 · Membres : Sami Hamizi & Vincent Lebel· Nos réglages sont dans `atelier/cahier-personnel.json` : ne les recopiez pas ici.
+Binôme : b17 · Membres : Sami Hamizi & Vincent Lebel · Nos réglages sont dans `atelier/cahier-personnel.json` : ne les recopiez pas ici.
 
 ## Mon positionnement (chacun de vous deux)
 
@@ -8,12 +8,12 @@ Pour chaque notion, chacun écrit « à l'aise » ou « à renforcer ». Ce n'es
 
 | Notion | Membre 1 : Vincent | Membre 2 : Sami |
 |---|---|---|
-| Structure HTML | à l'aise| à l'aise |
-| CSS et responsive | à l'aise| à l'aise |
-| JavaScript | à l'aise| à l'aise |
-| DOM et événements | à l'aise| à l'aise |
-| Git | à l'aise| à l'aise |
-| Tests | à l'aise| à l'aise |
+| Structure HTML | à l'aise | |
+| CSS et responsive | à l'aise | |
+| JavaScript | à l'aise | |
+| DOM et événements | à l'aise | |
+| Git | à l'aise | |
+| Tests | à l'aise | |
 
 Chacun, en une phrase, son objectif personnel pour J2 et J3.
 
@@ -76,3 +76,16 @@ Pour aller plus loin : le patch que vous avez corrigé, et ce que vous avez chan
 ## Fin de journée
 
 Chacun, une phrase : ce que vous savez faire ce soir et que vous ne saviez pas faire ce matin. Relisez votre positionnement : une notion est-elle passée de « à renforcer » à « à l'aise » ?
+
+## J3
+
+### Étape 1 · Le troisième mot
+
+Ma prédiction : si j'ajoute un troisième mot dans `MOTS`, « aide » répondra …
+
+### Étape 3 · Lighthouse (accessibilité)
+
+- Score de départ : 100
+- Score sans le `label` du champ : 93
+- Alerte : « Form elements do not have associated labels »
+- Essai au clavier : Tab jusqu'au champ, message tapé, Entrée : le message part.
